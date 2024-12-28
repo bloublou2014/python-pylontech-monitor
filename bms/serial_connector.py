@@ -68,7 +68,7 @@ class SerialConnector:
 
     def _read_line(self):
         read_serial = self.serial_connection.readline()
-        print(read_serial)
+        # print(read_serial)
         if read_serial:
             read_serial = read_serial.decode('ascii')
         return read_serial

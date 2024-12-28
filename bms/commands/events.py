@@ -46,7 +46,7 @@ from datetime import datetime
 # Command completed successfully
 # $$data history
 # data history
-# pylon>dataphistory
+# pylon>datahistory
 # @
 # -----------------------------------------------
 # Rec Item Index  : 1799
@@ -87,41 +87,7 @@ from datetime import datetime
 # 14       3293     0        19100    Idle         Normal       Normal       Normal       53%
 # Command completed successfully
 
-ABSENT = ' -      Absent   -'
 
+class EventsCommand(BaseCommand):
+    _command_name = 'data event'
 
-class PowerCommand(BaseCommand):
-    _command_name = 'pwr'
-
-    def _parse_value(self, name, value):
-        if value == '-' or value == '':
-            return None
-        if name in ['volt', 'tempr', 'tlow', 'thigh', 'vlow', 'vhigh', 'mostempr']:
-            return float('{}.{}'.format(value[:2], value[2:]))
-        if name in ['power']:
-            return int(value)
-        if name == 'time':
-            return datetime.strptime(value, '%Y-%m-%d %H:%M:%S')
-        return value
-
-    def parse(self, result):
-        if not result:
-            return None
-        p = re.compile(r'\s+')
-        headers = [x.lower().strip() for x in p.split(result[0])]
-        output = []
-
-        for line in result[1:]:
-            content = p.split(line)
-            content_len = len(content)
-            if content_len > 14 and content[13] != '-':
-                time_part = content.pop(14)
-                content[13] += ' ' + time_part
-            line_output = {}
-            for i, header in enumerate(headers):
-                if content_len <= i:
-                    line_output[header] = None
-                    continue
-                line_output[header] = self._parse_value(header, content[i])
-            output.append(line_output)
-        return output

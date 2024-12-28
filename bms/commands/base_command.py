@@ -7,6 +7,7 @@ class BaseCommand:
     _int_names = []
     _float_names = []
     _time_names = []
+    _multiple_values = []
     _is_array = False
 
     def __init__(self, serial_connection):
@@ -19,11 +20,14 @@ class BaseCommand:
         headers = self._parse_array_headers(result[0])
         return self._parse_array_content(result[1:], headers)
 
+    def _normalize_name(self, name):
+        return re.sub(r'[._\s]+', '_', name.lower().strip())
+
     def _parse_array_headers(self, line):
         if not line:
             raise ValueError('Line is empty')
         p = re.compile(r'([a-z0-9]+(\.\s?[a-z]+|\sState)?)', re.IGNORECASE)
-        headers = [re.sub(r'[._\s]+', '_', x[0].lower().strip()) for x in p.findall(line)]
+        headers = [self._normalize_name(x[0]) for x in p.findall(line)]
         return headers
 
     def _parse_array_content(self, lines, headers):
@@ -55,7 +59,9 @@ class BaseCommand:
         if name in self._int_names:
             return int(value)
         if name in self._time_names:
-            return datetime.strptime(value, '%Y-%m-%d %H:%M:%S')
+            return datetime.strptime(value, '%y-%m-%d %H:%M:%S' if len(value) == 17 else '%Y-%m-%d %H:%M:%S')
+        if name in self._multiple_values:
+            return value.split()
         return value
 
     def parse(self, result):

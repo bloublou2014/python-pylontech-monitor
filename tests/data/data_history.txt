@@ -1,0 +1,37 @@
+-----------------------------------------------
+Rec Item Index  : 1799
+Time            : 24-12-26 13:50:30
+Voltage         : 49397       mV
+Current         : 0           mA
+Temperature     : 21800       mC
+Percent         : 53          %
+Total Coulomb   : 50000       mAH
+Max Voltage     : 54000       mV
+Base State      : Idle
+Volt. State     : Normal
+Curr. State     : Normal
+Tempr. State    : Normal
+Coul. Status    : Normal
+Power Events    : 0x0
+Bat Events      : 0x0
+Bat Protect ENA : BOV BHV BLV BUV BSLP CBOT CBHT CBLT CBUT DBOT DBHT DBLT DBUT
+Pwr Protect ENA : POV PHV PLV PUV PSLP POT PHT COC2 COC COCA DOCA DOC DOC2 SC LCOUL
+System Fault    : 0x0
+-----------------------------------------------
+
+Battery  Volt     Curr     Tempr    Base State   Volt. State  Curr. State  Temp. State  Coulomb
+0        3293     0        19200    Idle         Normal       Normal       Normal       53%
+1        3293     0        19200    Idle         Normal       Normal       Normal       53%
+2        3293     0        19200    Idle         Normal       Normal       Normal       53%
+3        3293     0        19200    Idle         Normal       Normal       Normal       53%
+4        3294     0        19200    Idle         Normal       Normal       Normal       53%
+5        3293     0        19300    Idle         Normal       Normal       Normal       53%
+6        3293     0        19300    Idle         Normal       Normal       Normal       53%
+7        3293     0        19300    Idle         Normal       Normal       Normal       53%
+8        3294     0        19300    Idle         Normal       Normal       Normal       53%
+9        3293     0        19300    Idle         Normal       Normal       Normal       53%
+10       3293     0        19100    Idle         Normal       Normal       Normal       53%
+11       3293     0        19100    Idle         Normal       Normal       Normal       53%
+12       3293     0        19100    Idle         Normal       Normal       Normal       53%
+13       3293     0        19100    Idle         Normal       Normal       Normal       53%
+14       3293     0        19100    Idle         Normal       Normal       Normal       53%

@@ -1,3 +1,4 @@
+from bms.commands import DataEventCommand
 from bms.serial_connector import SerialConnector
 from bms.commands.power import PowerCommand
 from bms.commands.batteries import BatteriesCommand
@@ -16,4 +17,14 @@ class BMSController:
     def batteries(self):
         command = BatteriesCommand(self.connection)
         result = command.execute()
+        return result
+
+    def last_event(self):
+        command = DataEventCommand(self.connection)
+        result = command.get_last_event()
+        return result
+
+    def get_last_events(self, n=1):
+        command = DataEventCommand(self.connection)
+        result = command.get_last_events(n)
         return result
